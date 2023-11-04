@@ -13,6 +13,12 @@ const categorySchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    subCategory: [
+        {
+            type: mongoose.Types.ObjectId,
+            ref: 'SubCategory'
+        }
+    ],
     date: {
         type: Date,
         default: Date.now

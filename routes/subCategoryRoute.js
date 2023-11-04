@@ -1,5 +1,6 @@
 const express = require('express');
 const SubCategory = require('../model/subCategorySchema');
+const Category = require('../model/categorySchema');
 const subCategoryRouter = express.Router();
 
 //post sub category
@@ -10,14 +11,19 @@ subCategoryRouter.post('/subcategory', async (req, res) => {
             ...req.body
         })
         const result = await subCategory.save();
-        if (result) {
-            res.status(200).json({
-                success: true,
-                data: result
+        await Category.updateOne(
+            {
+                categoryId: req.id
+            },
+            {
+                $push: {
+                    subCategory: result._id
+                }
             })
-        } else {
-            res.status(404).json({ message: 'sub category not post' });
-        }
+        res.status(200).json({
+            success: true,
+            data: result
+        })
     } catch (error) {
         res.status(500).json({ message: error.message })
     }

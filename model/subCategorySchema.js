@@ -1,4 +1,4 @@
-const { default: mongoose } = require("mongoose");
+const { default: mongoose, Schema } = require("mongoose");
 
 const subCategorySchema = new mongoose.Schema({
     name: {
@@ -8,6 +8,11 @@ const subCategorySchema = new mongoose.Schema({
     slug: {
         type: String,
         required: true
+    },
+    categoryId: {
+        type: mongoose.Types.ObjectId,
+        ref: "Category"
+        
     }
 })
 

@@ -10,14 +10,12 @@ categoryRouter.post('/category', async (req, res) => {
             ...req.body
         })
         const result = await categoryData.save();
-        if (result) {
+        
             res.status(200).json({
                 success: true,
                 data: result
             })
-        } else {
-            res.status(404).json({ message: "category not post" })
-        }
+        
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
@@ -26,7 +24,7 @@ categoryRouter.post('/category', async (req, res) => {
 //get category
 categoryRouter.get('/category', async (req, res) => {
     try {
-        const categoryData = await Category.find();
+        const categoryData = await Category.find().populate("subCategory");
         if (categoryData) {
             res.status(200).json({
                 success: true,
