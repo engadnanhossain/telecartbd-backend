@@ -2,6 +2,7 @@ const express = require('express');
 const { default: mongoose } = require('mongoose');
 const categoryRouter = require('./routes/categoryRoute');
 const subCategoryRouter = require('./routes/subCategoryRoute');
+const userRouter = require('./routes/userRoute');
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -21,6 +22,7 @@ const connectDb = async () => {
 // router 
 app.use('/api', categoryRouter);
 app.use('/api', subCategoryRouter);
+app.use('/api', userRouter);
 
 connectDb();
 app.get('/', (req, res) => {
