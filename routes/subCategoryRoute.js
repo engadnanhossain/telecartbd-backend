@@ -13,7 +13,7 @@ subCategoryRouter.post('/subcategory', async (req, res) => {
         const result = await subCategory.save();
         await Category.updateOne(
             {
-                categoryId: req.id
+                _id: req.body.categoryId
             },
             {
                 $push: {
