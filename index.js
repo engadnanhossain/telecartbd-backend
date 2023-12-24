@@ -20,7 +20,7 @@ const connectDb = async () => {
 }
 
 // router 
-app.use('/api', categoryRouter);
+app.use('/api/category', categoryRouter);
 app.use('/api', subCategoryRouter);
 app.use('/api', userRouter);
 
