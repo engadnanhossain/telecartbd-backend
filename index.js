@@ -3,7 +3,9 @@ const { default: mongoose } = require('mongoose');
 const categoryRouter = require('./routes/categoryRoute');
 const subCategoryRouter = require('./routes/subCategoryRoute');
 const userRouter = require('./routes/userRoute');
+const dotenv = require('dotenv');
 const app = express();
+dotenv.config();
 const port = process.env.PORT || 5000;
 
 // middleware

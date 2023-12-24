@@ -40,7 +40,7 @@ const loginController = async (req, res) => {
             let token = jwt.sign({
                 name: user[0].name,
                 email: user[0].email
-            }, 'ajflkjsfsdaf6sdsaf+e8w7f87+4a+4+w+f7+A4+SD4F+SA+4E9F7', { expiresIn: '1h' });
+            }, process.env.ACCESS_TOKEN, { expiresIn: '1h' });
 
             res.status(200).json({
                 "access_token": token,
