@@ -4,6 +4,7 @@ const categoryRouter = require('./routes/categoryRoute');
 const subCategoryRouter = require('./routes/subCategoryRoute');
 const userRouter = require('./routes/userRoute');
 const dotenv = require('dotenv');
+const productRouter = require('./routes/productRoute');
 const app = express();
 dotenv.config();
 const port = process.env.PORT || 5000;
@@ -25,6 +26,7 @@ const connectDb = async () => {
 app.use('/api/category', categoryRouter);
 app.use('/api/subcategory', subCategoryRouter);
 app.use('/api/user', userRouter);
+app.use('/api/product', productRouter);
 
 connectDb();
 app.get('/', (req, res) => {
