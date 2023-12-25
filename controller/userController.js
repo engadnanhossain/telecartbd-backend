@@ -7,20 +7,28 @@ const jwt = require('jsonwebtoken');
 const signupController = async (req, res) => {
     try {
         const { name, email, password } = req.body;
+        const isExist = await User.findOne({ email: email });
 
-        const hashedPassword = await bcrypt.hash(password, 10);
+        if (!isExist) {
+            const hashedPassword = await bcrypt.hash(password, 10);
 
-        const user = new User({
-            name,
-            email,
-            password: hashedPassword,
-        });
+            const user = new User({
+                name,
+                email,
+                password: hashedPassword,
+            });
 
-        const result = await user.save();
-        res.status(200).json({
-            success: true,
-            data: result
-        });
+            const result = await user.save();
+            res.status(200).json({
+                success: true,
+                data: result
+            });
+
+        } else {
+            res.status(404).json({ message: "User Already Exist" })
+        }
+
+
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
