@@ -56,8 +56,27 @@ const getSingleProductController = async (req, res) => {
     }
 }
 
+
+// update product 
+const updateProudctController = async (req, res) => {
+    try {
+        const product = await Product.findOneAndUpdate({ _id: req.params.id }, req.body);
+        if (product) {
+            res.status(200).json({
+                message: "Success",
+                data: product
+            })
+        } else {
+            res.status(404).json({ message: "product not update" });
+        }
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
+
 module.exports = {
     postProductController,
     getProductController,
-    getSingleProductController
+    getSingleProductController,
+    updateProudctController
 }
