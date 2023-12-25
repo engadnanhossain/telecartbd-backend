@@ -1,9 +1,6 @@
 const { default: mongoose } = require("mongoose");
 
 const cartSchema = new mongoose.Schema({
-    cartId: {
-        type: String
-    },
     title: {
         type: String,
         required: [true, "title is required"]
@@ -11,9 +8,6 @@ const cartSchema = new mongoose.Schema({
     price: {
         type: Number,
         required: [true, "price is required"]
-    },
-    offerPrice: {
-        type: Number
     },
     images: [],
     altTag: {
