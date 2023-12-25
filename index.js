@@ -5,6 +5,7 @@ const subCategoryRouter = require('./routes/subCategoryRoute');
 const userRouter = require('./routes/userRoute');
 const dotenv = require('dotenv');
 const productRouter = require('./routes/productRoute');
+const cartRouter = require('./routes/cartRoute');
 const app = express();
 dotenv.config();
 const port = process.env.PORT || 5000;
@@ -27,6 +28,7 @@ app.use('/api/category', categoryRouter);
 app.use('/api/subcategory', subCategoryRouter);
 app.use('/api/user', userRouter);
 app.use('/api/product', productRouter);
+app.use('/api/cart', cartRouter);
 
 connectDb();
 app.get('/', (req, res) => {
