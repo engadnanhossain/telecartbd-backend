@@ -22,7 +22,7 @@ const productSchema = new mongoose.Schema({
     model: {
         type: String
     },
-    brnad: {
+    brand: {
         type: String,
     },
     quantity: {
