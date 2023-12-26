@@ -9,6 +9,10 @@ const cartSchema = new mongoose.Schema({
         type: Number,
         required: [true, "price is required"]
     },
+    email: {
+        type: String,
+        required: [true, "email is required"]
+    },
     images: [],
     altTag: {
         type: String

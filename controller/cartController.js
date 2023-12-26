@@ -3,9 +3,9 @@ const Product = require("../model/productSchema");
 // add to cart 
 const addCartController = async (req, res) => {
     try {
-        const { quantity } = req.body;
+        const { cartId, email, quantity } = req.body;
         let updatePrice;
-        const products = await Product.find({ _id: req.body.cartId });
+        const products = await Product.find({ _id: cartId });
         const { title, price, offerPrice, altTag, images } = products[0];
 
         if (offerPrice) {
@@ -18,7 +18,8 @@ const addCartController = async (req, res) => {
             title,
             price: updatePrice,
             altTag,
-            images
+            images,
+            email
         });
 
         const result = await cart.save();
@@ -39,9 +40,10 @@ const addCartController = async (req, res) => {
 // get add to cart 
 const getAddtoCartController = async (req, res) => {
     try {
-        const products = await Cart.find();
+        const { email } = req.query || {};
+        const products = await Cart.find({ email: email });
         const totalPrice = products.reduce((sum, product) => sum + (product.price || 0), 0);
-        if (products) {
+        if (products.length > 0) {
             res.status(200).json({
                 message: "Success",
                 totalPrice,
