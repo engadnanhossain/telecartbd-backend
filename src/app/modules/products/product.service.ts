@@ -7,11 +7,22 @@ const data = await Product.create(payload)
 return data
 }
 
-const getAllProductsService = async () => {
 
+// get all product
+const getAllProductsService = async () => {
+const data = await Product.find();
+return data
+}
+
+
+//get single product
+const getSingleProductService = async (id: string) => {
+    const data = await Product.findById({_id:id});
+    return data
 }
 
 export const productsService = {
     createProductsService,
-    getAllProductsService
+    getAllProductsService,
+    getSingleProductService
 }
