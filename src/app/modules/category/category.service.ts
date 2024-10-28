@@ -6,6 +6,34 @@ const createCategoryService = async (payload:ICategory) => {
     return data
 }
 
+
+// get all category 
+const getAllCategoryService = async() => {
+    const data = await Category.find();
+    return data
+}
+
+
+const getSingleCategoryService = async (id: string) => {
+    const data = await Category.findById({_id: id});
+    return data
+}
+
+
+const updateCategoryService = async (payload: ICategory, id: string) => {
+    const data = await Category.findByIdAndUpdate(id, payload);
+    return data
+}
+
+const deleteCategoryServce = async (id: string) => {
+    const data = await Category.findByIdAndDelete(id);
+    return data
+}
+
 export ={
-    createCategoryService
+    createCategoryService,
+    getAllCategoryService,
+    getSingleCategoryService,
+    updateCategoryService,
+    deleteCategoryServce
 }
