@@ -21,8 +21,16 @@ const getSingleProductService = async (id: string) => {
     return data
 }
 
+
+//update product
+const updateProductService = async (payload:IProduct, id: string) => {
+const data = await Product.findByIdAndUpdate(id, payload);
+return data
+}
+
 export const productsService = {
     createProductsService,
     getAllProductsService,
-    getSingleProductService
+    getSingleProductService,
+    updateProductService
 }
