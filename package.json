@@ -26,6 +26,7 @@
     "@types/express": "^5.0.0",
     "@types/http-status": "^0.2.30",
     "@types/jsonwebtoken": "^9.0.7",
-    "http-status": "^2.0.0"
+    "http-status": "^2.0.0",
+    "zod": "^3.23.8"
   }
 }

@@ -21,7 +21,7 @@ const userCreateService = async ( payload:IUser) => {
      token = jwt.sign({
             name: user?.name,
             email: user?.email
-          }, config.jwt_secret as Secret , { expiresIn: '1h' });
+          }, config.jwt_secret as Secret , { expiresIn: '7d' });
     }
 
     return token
