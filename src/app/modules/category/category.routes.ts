@@ -4,14 +4,14 @@ import { authGuard } from '../../middleware/authGuard';
 
 const routes = express.Router();
 
-routes.post('/', categoryController.createCategory);
+routes.post('/', authGuard, categoryController.createCategory);
 
-routes.get('/', authGuard, categoryController.getAllCategory);
+routes.get('/', categoryController.getAllCategory);
 
 routes.get('/:id', categoryController.getSingleCategory);
 
-routes.put('/:id', categoryController.updateCategory);
+routes.put('/:id', authGuard, categoryController.updateCategory);
 
-routes.delete('/:id', categoryController.deleteCategory)
+routes.delete('/:id', authGuard, categoryController.deleteCategory)
 
 export const categoryRoutes = routes;

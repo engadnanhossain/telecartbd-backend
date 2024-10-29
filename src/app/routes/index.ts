@@ -1,5 +1,5 @@
 import express from 'express'
-import { productRoutes } from '../modules/products/product.route';
+import { productRoutes } from '../modules/products/product.routes';
 import { categoryRoutes } from '../modules/category/category.routes';
 import { subCategoryRoutes } from '../modules/subcategory/subcategory.routes';
 import { userRoutes } from '../modules/users/users.routes';
