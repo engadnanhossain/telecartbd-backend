@@ -6,7 +6,7 @@ type TMeta = {
     total: number;
 }
 
-type TResponseData<T> = {
+export type TResponseData<T> = {
 success: boolean;
 statusCode: number;
 message: String;
