@@ -16,6 +16,33 @@ const userCreate = catchAsync(async (req: Request, res: Response) => {
 });
 
 
+
+const getAllUser = catchAsync(async (req: Request, res: Response) => {
+    const result = await usersService.getAllUserService();
+    sendResponse(res, {
+        success: true,
+        statusCode: httpStatus.OK,
+        message: 'Fetch All Users Successfully',
+        data: result
+    })
+});
+
+
+
+const getSingleUser = catchAsync(async (req: Request, res: Response) => {
+    const email = req.params.email;
+    const result = await usersService.getSingleUserService(email);
+    sendResponse(res, {
+        success: true,
+        statusCode: httpStatus.OK,
+        message: 'Fetch Single User Successfully',
+        data: result
+    })
+})
+
+
 export = {
-    userCreate
+    userCreate,
+    getAllUser,
+    getSingleUser
 }

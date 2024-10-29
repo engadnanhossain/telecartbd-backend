@@ -28,6 +28,20 @@ const userCreateService = async ( payload:IUser) => {
 }
 
 
+
+const getAllUserService = async () => {
+    const data = await User.find();
+    return data
+}
+
+
+const getSingleUserService = async (email:string) => {
+    const data = await User.findOne({email});
+    return data
+}
+
 export = {
-    userCreateService
+    userCreateService,
+    getAllUserService,
+    getSingleUserService
 }
