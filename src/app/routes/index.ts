@@ -4,6 +4,7 @@ import { categoryRoutes } from '../modules/category/category.routes';
 import { subCategoryRoutes } from '../modules/subcategory/subcategory.routes';
 import { userRoutes } from '../modules/users/users.routes';
 import { authRoutes } from '../modules/auth/auth.routes';
+import { subCategoryChildRoutes } from '../modules/subcategoryChild/subcategoryChild.routes';
 
 export const routes = express.Router();
 
@@ -19,6 +20,10 @@ const moduleRoutes = [
     {
         path: '/subcategory',
         route: subCategoryRoutes
+    },
+    {
+        path: '/subcategorychild',
+        route: subCategoryChildRoutes
     },
     {
         path: '/user',
