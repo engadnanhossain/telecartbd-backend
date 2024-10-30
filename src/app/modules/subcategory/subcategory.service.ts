@@ -1,8 +1,12 @@
+import { Category } from "../category/category.model";
 import { ISubcategory } from "./subcategory.interface"
 import { Subcategory } from "./subcategory.model"
 
 const createSubcategoryService = async (payload:ISubcategory) => {
     const data = await Subcategory.create(payload);
+    await Category.findByIdAndUpdate(payload.category, {
+        $push: { subCategory: data._id }
+    });
     return data;
 };
 

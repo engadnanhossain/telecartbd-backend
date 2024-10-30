@@ -9,7 +9,8 @@ const createCategoryService = async (payload:ICategory) => {
 
 // get all category 
 const getAllCategoryService = async() => {
-    const data = await Category.find();
+    const data = await Category.find()
+    .populate('subCategory');
     return data
 }
 
