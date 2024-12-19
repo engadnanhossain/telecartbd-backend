@@ -4,7 +4,7 @@ import { productsService } from "./product.service";
 import { sendResponse } from "../../../utils/sendResponse";
 import httpStatus from 'http-status'
 
-const createProducts = catchAsync(async (req:Request, res:Response) => {
+const createProducts = catchAsync(async (req: Request, res: Response) => {
     const data = req.body;
     const result = await productsService.createProductsService(data);
 
@@ -16,12 +16,17 @@ const createProducts = catchAsync(async (req:Request, res:Response) => {
     })
 })
 
-const getAllProducts = catchAsync(async (req: Request, res:Response) => {
+const getAllProducts = catchAsync(async (req: Request, res: Response) => {
     const result = await productsService.getAllProductsService();
     sendResponse(res, {
         success: true,
         statusCode: httpStatus.OK,
         message: 'All Products Get Successfully',
+        meta: {
+            total: result?.length,
+            page: 0,
+            limit: 0
+        },
         data: result
     })
 })
@@ -42,7 +47,7 @@ const getSingleProduct = catchAsync(async (req: Request, res: Response) => {
 
 
 const updateProduct = catchAsync(async (req: Request, res: Response) => {
-    const {...payload} = req.body;
+    const { ...payload } = req.body;
     const id = req.params.id;
     const result = await productsService.updateProductService(payload, id)
 
